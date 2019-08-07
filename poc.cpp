@@ -91,7 +91,9 @@ void run_bfs(vector<int> &roots, int nodes) {
             g_run_queue.pop();
             g_running++;
 
+            cout << "Spawn thread " << node << endl;
             thread new_thread(g_node_data[node].to_execute, node);
+            new_thread.detach();
             //g_node_data[node].to_execute(node);
        }
        g_mtx.unlock();
